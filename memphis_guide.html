@@ -346,10 +346,9 @@ const PRACTICAL=[
 const ERA_LABELS={river:'The River',native:'Native Heritage',antebellum:'Antebellum',civilwar:'Civil War',gilded:'Gilded Age',beale:'Beale Street',crump:'Crump Era',rock:"Rock'n'Roll",rights:'Civil Rights',suburb:'Suburbs'};
 
 const map=L.map('map',{center:[35.135,-90.000],zoom:12,zoomControl:true});
-const TILES={dark:'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',light:'https://{s}.basemaps.cartocdn.com/voyager/{z}/{x}/{y}{r}.png'};
-const tileOpts={attribution:'© <a href="https://www.openstreetmap.org/copyright">OSM</a> © <a href="https://carto.com/">CARTO</a>',subdomains:'abcd',maxZoom:19};
+const TILES={dark:{url:'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',opts:{attribution:'Tiles © <a href="https://www.esri.com/">Esri</a> — Esri, HERE, Garmin, © OpenStreetMap contributors',maxZoom:16}},light:{url:'https://tile.openstreetmap.org/{z}/{x}/{y}.png',opts:{attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',maxZoom:19}}};
 let curTile=null;
-function setTiles(t){if(curTile)map.removeLayer(curTile);curTile=L.tileLayer(TILES[t],tileOpts).addTo(map)}
+function setTiles(t){if(curTile)map.removeLayer(curTile);curTile=L.tileLayer(TILES[t].url,TILES[t].opts).addTo(map)}
 const themeToggle=document.getElementById('themeToggle');
 function applyTheme(t){document.documentElement.setAttribute('data-theme',t);themeToggle.textContent=t==='dark'?'☀':'◑';setTiles(t);try{localStorage.setItem('memphis-guide-theme',t)}catch(e){}}
 applyTheme((()=>{try{return localStorage.getItem('memphis-guide-theme')}catch(e){return null}})()||'dark');

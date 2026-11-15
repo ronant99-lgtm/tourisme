@@ -17,9 +17,9 @@ This rule file governs the creation of standalone HTML touristic map pages — t
 ## 1. Core Stack
 
 - **Leaflet 1.9.4** for interactive maps — always load from `https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/`
-- **CARTO Voyager** tile layer for the map (light, readable, neutral)
+- **OpenStreetMap** tile layer (CARTO exige désormais une clé API) for the map (light, readable, neutral)
   ```
-  https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png
+  https://tile.openstreetmap.org/{z}/{x}/{y}.png
   ```
 - **Google Fonts:** `DM Serif Display` (italic variant included) + `DM Sans` (weights 300, 400, 600)
 - **No external UI framework.** Pure CSS with CSS custom properties.
@@ -157,7 +157,7 @@ Extend this palette as needed for more days.
 ## 7. Map Component
 
 ### Tile layer
-Always use CARTO Voyager (light). No dark mode for the map — the Voyager style reads well in all contexts.
+Always use OpenStreetMap standard tiles (light, no API key — CARTO basemaps now return "API KEY REQUIRED"). No dark mode for the map — the OSM style reads well in all contexts.
 
 ### Marker icon factory
 ```javascript
