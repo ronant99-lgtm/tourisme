@@ -839,8 +839,8 @@ footer{padding:2rem 1rem;font-size:.68rem;color:#9ca3af;text-align:center;border
 var DEFAULT_LAT=31.0,DEFAULT_LNG=-90.5,DEFAULT_ZOOM=7;
 
 var map=L.map('map').setView([DEFAULT_LAT,DEFAULT_LNG],DEFAULT_ZOOM);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
-  attribution:'©OpenStreetMap ©CARTO'
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',maxZoom:19
 }).addTo(map);
 
 function mkIcon(color,sz,num){
